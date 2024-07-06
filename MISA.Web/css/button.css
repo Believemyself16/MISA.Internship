@@ -1,0 +1,45 @@
+.button-container {
+  padding: 0 10px;
+}
+.custom-button {
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.custom-button:hover {
+  color: #fff;
+  background-color: #9CD5B3;
+  cursor: pointer;
+}
+.large-button {
+  color: #fff;
+  background-color: #39AC66;
+  height: 36px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+}
+.feature-button-container {
+  display: flex;
+  align-items: center;
+  color: #6BC18D;
+}
+.custom-feature-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  border: 1px solid #39AC66;
+  border-radius: 3px;
+  color: #39AC66;
+}
+.custom-feature-button:hover {
+  cursor: pointer;
+  color: #fff;
+  background-color: #39AC66;
+}

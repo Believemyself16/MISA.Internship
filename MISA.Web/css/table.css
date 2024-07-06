@@ -1,0 +1,20 @@
+.table-content {
+  width: 100%;
+  border-collapse: collapse;
+}
+.table-content th {
+  background-color: #6BC18D;
+  text-align: left;
+  padding-left: 15px;
+}
+.table-content td {
+  padding-left: 15px;
+}
+.table-content tr:hover {
+  background-color: #CEEAD9;
+}
+
+.table-content th, .table-content td {
+  height: 30px;
+  border: 1px solid #000;
+}

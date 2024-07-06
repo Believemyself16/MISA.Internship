@@ -1,0 +1,9 @@
+.pagination-area {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.pagination-container {
+  display: flex;
+  align-items: center;
+}

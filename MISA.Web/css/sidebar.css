@@ -1,0 +1,35 @@
+.sidebar-container {
+  background-color: #055B27;
+  height: 100vh;
+  width: 260px;
+  padding: 30px 15px;
+  top: 60px;
+  position: fixed;
+  z-index: 999;
+  left: -300px;
+  transition: 0.3s;
+}
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  height: 45px;
+  margin-bottom: 10px;
+  border-radius: 14px;
+  color: #fff;
+  background-color: #067933;
+}
+.sidebar-item:hover {
+  color: #055B27;
+  background-color: #CEEAD9;
+  cursor: pointer;
+}
+.sidebar-item a {
+  color: #fff;
+  text-decoration: none;
+}
+.sidebar-item:hover a {
+  color: #055B27;
+}
+.sidebar-container.active {
+  left: 0;
+}

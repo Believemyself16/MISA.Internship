@@ -1,0 +1,8 @@
+.logo-container {
+  display: flex;
+  align-items: center
+}
+.banner-logo {
+  height: 50px;
+  padding: 0px 5px;
+}
