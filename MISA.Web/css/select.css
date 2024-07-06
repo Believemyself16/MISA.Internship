@@ -10,6 +10,13 @@
   font-size: 14px;
   font-weight: 600;
 }
+.select-item:hover {
+  cursor: pointer;
+}
 .custom-select-item {
   color: red;
+}
+.pagination-select-container {
+  width: 55px;
+  padding-left: 15px;
 }

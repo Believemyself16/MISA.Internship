@@ -1,0 +1,15 @@
+.modal-container {
+  display: none;
+  justify-content: center;
+  position: fixed;
+  z-index: 1001;
+  top: 100px;
+  width: 100%;
+}
+.modal-content {
+  width: 800px;
+  padding: 15px;
+  background-color: #fff;
+  border: 1px solid #067933;
+  border-radius: 5px;
+}

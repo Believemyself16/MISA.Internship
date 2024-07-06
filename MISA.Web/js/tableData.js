@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const recordPerPageSelect = document.getElementById('recordPerPage');
   const prevPageButton = document.getElementById('prevPage');
   const nextPageButton = document.getElementById('nextPage');
-  const totalPagesElement = document.getElementById('totalPages');
+  const totalRecords = document.getElementById('totalRecords');
 
   let currentPage = 1;
   let recordPerPage = parseInt(recordPerPageSelect.value);
@@ -60,12 +60,13 @@ document.addEventListener("DOMContentLoaded", function() {
       `;
       tableBody.appendChild(row);
     });
+
+    totalRecords.textContent = data.length;
   }
 
   function updatePagination() {
     const totalRecords = data.length;
     const totalPages = Math.ceil(totalRecords / recordPerPage);
-    totalPagesElement.textContent = `of ${totalPages}`;
 
     prevPageButton.disabled = currentPage === 1;
     nextPageButton.disabled = currentPage === totalPages || totalRecords === 0;
@@ -79,21 +80,21 @@ document.addEventListener("DOMContentLoaded", function() {
     updatePagination();
   });
 
-  // prevPageButton.addEventListener('click', function() {
-  //   if (currentPage > 1) {
-  //     currentPage--;
-  //     updatePagination();
-  //   }
-  // });
+  prevPageButton.addEventListener('click', function() {
+    if (currentPage > 1) {
+      currentPage--;
+      updatePagination();
+    }
+  });
 
-  // nextPageButton.addEventListener('click', function() {
-  //   const totalRecords = data.length;
-  //   const totalPages = Math.ceil(totalRecords / recordsPerPage);
-  //   if (currentPage < totalPages) {
-  //     currentPage++;
-  //     updatePagination();
-  //   }
-  // });
+  nextPageButton.addEventListener('click', function() {
+    const totalRecords = data.length;
+    const totalPages = Math.ceil(totalRecords / recordPerPage);
+    if (currentPage < totalPages) {
+      currentPage++;
+      updatePagination();
+    }
+  });
 
   updatePagination();
 });

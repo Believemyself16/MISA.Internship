@@ -24,6 +24,9 @@
   border: none;
   border-radius: 4px;
 }
+.large-button:hover {
+  cursor: pointer;
+}
 .feature-button-container {
   display: flex;
   align-items: center;
@@ -42,4 +45,40 @@
   cursor: pointer;
   color: #fff;
   background-color: #39AC66;
+}
+.navigation-button {
+  align-items: center;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  background-color: #fff;
+  font-size: 24px;
+}
+.navigation-button:hover {
+  cursor: pointer;
+  color: #fff;
+  background-color: #6BC18D;
+  font-size: 24px;
+}
+.form-button-area {
+  display: flex;
+  justify-content: flex-end;
+}
+.form-button-container {
+  display: flex;
+  width: 120px;
+  justify-content: space-between;
+  margin: 20px 5px;
+}
+.close-button {
+  color: #000;
+  background-color: #fff;
+  height: 36px;
+  font-size: 14px;
+  border: 1px solid #808080;
+  border-radius: 4px;
+}
+.close-button:hover {
+  cursor: pointer;
 }
