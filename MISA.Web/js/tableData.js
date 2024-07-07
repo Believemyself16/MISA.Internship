@@ -56,7 +56,26 @@ document.addEventListener("DOMContentLoaded", function() {
         <td>${item.gender}</td>
         <td>${item.dob}</td>
         <td>${item.email}</td>
-        <td>${item.address}</td>
+        <td>
+          ${item.address}
+          <div class="action-button-container">
+            <div class="feature-button-container">
+              <button class="custom-feature-button">
+                <i class="custom-icon mdi mdi-pencil-outline"></i>
+              </button>
+            </div>
+            <div class="feature-button-container">
+              <button class="custom-feature-button">
+                <i class="custom-icon mdi mdi-content-copy"></i>
+              </button>
+            </div>
+            <div class="feature-button-container">
+              <button class="delete-button">
+                <i class="custom-icon mdi mdi-close"></i>
+              </button>
+            </div>
+          </div>
+        </td>
       `;
       tableBody.appendChild(row);
     });

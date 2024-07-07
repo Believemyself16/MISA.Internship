@@ -4,6 +4,7 @@
   display: flex;
   justify-content: center;
 }
+
 .select-item {
   width: 75%;
   border: none;
@@ -13,9 +14,7 @@
 .select-item:hover {
   cursor: pointer;
 }
-.custom-select-item {
-  color: red;
-}
+
 .pagination-select-container {
   width: 55px;
   padding-left: 15px;

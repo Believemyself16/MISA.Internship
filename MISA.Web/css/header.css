@@ -11,10 +11,12 @@
   box-shadow: 0 2px 5px #0000001a;
   background-color: #fff;
 }
+
 .area-1 {
   display: flex;
   align-items: center;
 }
+
 .account-container {
   display: flex;
   align-items: center;

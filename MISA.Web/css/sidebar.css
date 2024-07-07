@@ -9,6 +9,7 @@
   left: -300px;
   transition: 0.3s;
 }
+
 .sidebar-item {
   display: flex;
   align-items: center;
@@ -30,6 +31,7 @@
 .sidebar-item:hover a {
   color: #055B27;
 }
+
 .sidebar-container.active {
   left: 0;
 }
