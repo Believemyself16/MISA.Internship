@@ -5,21 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
-  <link rel="stylesheet" href="../css/body.css">
-  <link rel="stylesheet" href="../css/logo.css">
-  <link rel="stylesheet" href="../css/icon.css">
-  <link rel="stylesheet" href="../css/header.css">
-  <link rel="stylesheet" href="../css/select.css">
-  <link rel="stylesheet" href="../css/profile.css">
-  <link rel="stylesheet" href="../css/text.css">
-  <link rel="stylesheet" href="../css/button.css">
-  <link rel="stylesheet" href="../css/sidebar.css">
+  <link rel="stylesheet" href="../css/layout/body.css">
+  <link rel="stylesheet" href="../css/components/logo.css">
+  <link rel="stylesheet" href="../css/components/icon.css">
+  <link rel="stylesheet" href="../css/layout/header.css">
+  <link rel="stylesheet" href="../css/components/select.css">
+  <link rel="stylesheet" href="../css/components/profile.css">
+  <link rel="stylesheet" href="../css/layout/text.css">
+  <link rel="stylesheet" href="../css/components/button.css">
+  <link rel="stylesheet" href="../css/layout/sidebar.css">
   
   <link rel="icon" type="image/png" href="../assets/Favicon-MISA-CukCuk.png">
   <title>MISA CukCuk</title>
 </head>
 <body>
   <div class="header-container">
+    <!-- Phần logo web và select chi nhánh -->
     <div class="area-1">
       <div class="logo-container">
         <div class="button-container">
@@ -29,7 +30,7 @@
         </div>
         <div>
           <a href="./index.html">
-            <img src="../assets/cukcuk-logo.png" class="banner-logo">
+            <img src="../assets/cukcuk-logo.png" alt="App logo" class="banner-logo">
           </a>
         </div>
       </div>
@@ -42,10 +43,11 @@
       </div>
     </div>
     
+    <!-- Phần thông tin tài khoản -->
     <div class="account-container">
       <div class="account-info">
         <div class="account-image-container">
-          <img src="../assets/icon/avatar-default.png" class="account-image">
+          <img src="../assets/icon/avatar-default.png" alt="Avatar image" class="account-image">
         </div>
         <div class="font-text account-name">
           <h3>Vũ Quang Hân</h3>
@@ -59,6 +61,7 @@
     </div>
   </div>
 
+  <!-- Phần sidebar -->
   <div class="sidebar-container" id="sidebar">
     <div class="sidebar-item" data-link="index.html">
       <i class="custom-icon mdi mdi-home"></i>
@@ -78,13 +81,13 @@
     </div> 
   </div>
 
+  <!-- Phần content trang -->
   <div class="content-container">
     <div>
       <h1>Đây là trang chủ</h1>
     </div>
   </div>
 
-  <script type="text/javascript" src="../js/onSidebarClick.js"></script>
-  <script type="text/javascript" src="../js/tableData.js"></script>
+  <script type="text/javascript" src="./js/sidebar.js"></script>
 </body>
 </html>

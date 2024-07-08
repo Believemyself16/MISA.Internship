@@ -37,15 +37,16 @@ document.addEventListener("DOMContentLoaded", function() {
   const prevPageButton = document.getElementById('prevPage');
   const nextPageButton = document.getElementById('nextPage');
   const totalRecords = document.getElementById('totalRecords');
+  const searchInput = document.getElementById('searchInput');
 
   let currentPage = 1;
   let recordPerPage = parseInt(recordPerPageSelect.value);
 
-  function displayData(currentPage) {
+  function displayData(dataArray, currentPage) {
     tableBody.innerHTML = '';
     const startIndex = (currentPage - 1) * recordPerPage;
     const endIndex = startIndex + recordPerPage;
-    const paginatedData = data.slice(startIndex, endIndex);
+    const paginatedData = dataArray.slice(startIndex, endIndex);
 
     paginatedData.forEach(item => {
       const row = document.createElement('tr');
@@ -80,29 +81,29 @@ document.addEventListener("DOMContentLoaded", function() {
       tableBody.appendChild(row);
     });
 
-    totalRecords.textContent = data.length;
+    totalRecords.textContent = dataArray.length;
   }
 
-  function updatePagination() {
-    const totalRecords = data.length;
+  function updatePagination(dataArray) {
+    const totalRecords = dataArray.length;
     const totalPages = Math.ceil(totalRecords / recordPerPage);
 
     prevPageButton.disabled = currentPage === 1;
     nextPageButton.disabled = currentPage === totalPages || totalRecords === 0;
 
-    displayData(currentPage);
+    displayData(dataArray, currentPage);
   }
 
   recordPerPageSelect.addEventListener('change', function() {
     recordPerPage = parseInt(recordPerPageSelect.value);
     currentPage = 1;
-    updatePagination();
+    updatePagination(data);
   });
 
   prevPageButton.addEventListener('click', function() {
     if (currentPage > 1) {
       currentPage--;
-      updatePagination();
+      updatePagination(data);
     }
   });
 
@@ -111,9 +112,15 @@ document.addEventListener("DOMContentLoaded", function() {
     const totalPages = Math.ceil(totalRecords / recordPerPage);
     if (currentPage < totalPages) {
       currentPage++;
-      updatePagination();
+      updatePagination(data);
     }
   });
 
-  updatePagination();
+  searchInput.addEventListener('input', function() {
+    const searchValue = searchInput.value.toLowerCase();
+    const filteredData = data.filter(item => item.name.toLowerCase().includes(searchValue));
+    updatePagination(filteredData);
+  });
+
+  updatePagination(data);
 });
