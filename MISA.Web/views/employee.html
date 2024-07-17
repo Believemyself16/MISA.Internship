@@ -1,310 +1,322 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
-  <link rel="stylesheet" href="../css/layout/body.css">
-  <link rel="stylesheet" href="../css/components/logo.css">
-  <link rel="stylesheet" href="../css/components/icon.css">
-  <link rel="stylesheet" href="../css/layout/header.css">
-  <link rel="stylesheet" href="../css/components/select.css">
-  <link rel="stylesheet" href="../css/components/profile.css">
-  <link rel="stylesheet" href="../css/layout/text.css">
-  <link rel="stylesheet" href="../css/components/button.css">
-  <link rel="stylesheet" href="../css/layout/sidebar.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" />
+    <link rel="stylesheet" href="../css/layout/body.css" />
+    <link rel="stylesheet" href="../css/components/logo.css" />
+    <link rel="stylesheet" href="../css/components/icon.css" />
+    <link rel="stylesheet" href="../css/layout/header.css" />
+    <link rel="stylesheet" href="../css/components/select.css" />
+    <link rel="stylesheet" href="../css/components/profile.css" />
+    <link rel="stylesheet" href="../css/layout/text.css" />
+    <link rel="stylesheet" href="../css/components/button.css" />
+    <link rel="stylesheet" href="../css/layout/sidebar.css" />
+    <link rel="stylesheet" href="../css/components/blur.css" />
+    <link rel="stylesheet" href="../css/components/popup.css" />
 
-  <link rel="stylesheet" href="../css/employee.css">
-  <link rel="stylesheet" href="../css/components/searchbox.css">
-  <link rel="stylesheet" href="../css/components/table.css">
-  <link rel="stylesheet" href="../css/components/pagination.css">
-  <link rel="stylesheet" href="../css/components/modal.css">
-  <link rel="stylesheet" href="../css/components/form.css">
-  
-  <link rel="icon" type="image/png" href="../assets/Favicon-MISA-CukCuk.png">
-  <title>MISA CukCuk</title>
-</head>
-<body>
-  <div class="header-container">
-    <!-- Phần logo web và select chi nhánh -->
-    <div class="area-1">
-      <div class="logo-container">
+    <link rel="stylesheet" href="../css/view/employee.css" />
+    <link rel="stylesheet" href="../css/components/searchbox.css" />
+    <link rel="stylesheet" href="../css/components/table.css" />
+    <link rel="stylesheet" href="../css/components/pagination.css" />
+    <link rel="stylesheet" href="../css/components/modal.css" />
+    <link rel="stylesheet" href="../css/components/form.css" />
+
+    <link rel="icon" type="image/png" href="../assets/Favicon-MISA-CukCuk.png" />
+    <title>MISA CukCuk</title>
+  </head>
+  <body>
+    <div class="header-container">
+      <!-- Phần logo web và select chi nhánh -->
+      <div class="area-1">
+        <div class="logo-container">
+          <div class="button-container">
+            <button class="custom-button">
+              <i class="custom-icon mdi mdi-menu" id="menu-button"></i>
+            </button>
+          </div>
+          <div>
+            <a href="../index.html">
+              <img src="../assets/cukcuk-logo.png" alt="App logo" class="banner-logo" />
+            </a>
+          </div>
+        </div>
+        <div class="select-container">
+          <select class="select-item">
+            <option value="hanoi" class="select-option">Chi nhánh Hà Nội</option>
+            <option value="haiphong">Chi nhánh Hải Phòng</option>
+            <option value="hochiminh">Chi nhánh Hồ Chí Minh</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Phần thông tin tài khoản -->
+      <div class="account-container">
+        <div class="account-info">
+          <div class="account-image-container">
+            <img src="../assets/icon/avatar-default.png" alt="Avatar image" class="account-image" />
+          </div>
+          <div class="font-text account-name">
+            <h3>Vũ Quang Hân</h3>
+          </div>
+        </div>
         <div class="button-container">
           <button class="custom-button">
-            <i class="custom-icon mdi mdi-menu" id="menu-button"></i>
+            <i class="custom-icon mdi mdi-dots-horizontal"></i>
           </button>
         </div>
-        <div>
-          <a href="../index.html">
-            <img src="../assets/cukcuk-logo.png" alt="App logo" class="banner-logo">
-          </a>
-        </div>
-      </div>
-      <div class="select-container">
-        <select class="select-item">
-          <option value="hanoi" class="select-option">Chi nhánh Hà Nội</option>
-          <option value="haiphong">Chi nhánh Hải Phòng</option>
-          <option value="hochiminh">Chi nhánh Hồ Chí Minh</option>
-        </select>
-      </div>
-    </div>
-    
-    <!-- Phần thông tin tài khoản -->
-    <div class="account-container">
-      <div class="account-info">
-        <div class="account-image-container">
-          <img src="../assets/icon/avatar-default.png" alt="Avatar image" class="account-image">
-        </div>
-        <div class="font-text account-name">
-          <h3>Vũ Quang Hân</h3>
-        </div>
-      </div>
-      <div class="button-container">
-        <button class="custom-button">
-          <i class="custom-icon mdi mdi-dots-horizontal"></i>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Phần sidebar -->
-  <div class="sidebar-container" id="sidebar">
-    <div class="sidebar-item" data-link="../index.html">
-      <i class="custom-icon mdi mdi-home"></i>
-      <a class="font-link" href="../index.html">Trang chủ</a>
-    </div>
-    <div class="sidebar-item" data-link="report.html">
-      <i class="custom-icon mdi mdi-chart-areaspline"></i>
-      <a class="font-link" href="report.html">Báo cáo</a>
-    </div>
-    <div class="sidebar-item" data-link="employee.html">
-      <i class="custom-icon mdi mdi-account-group"></i>
-      <a class="font-link" href="employee.html">Nhân viên</a>
-    </div>
-    <div class="sidebar-item" data-link="settings.html">
-      <i class="custom-icon mdi mdi-cog"></i>
-      <a class="font-link" href="settings.html">Cài đặt</a>
-    </div>  
-  </div>
-
-  <!-- Phần content trang -->
-  <div class="content-container" id="main-content">
-    <div class="top-area">
-      <div class="info-heading font-text">
-        <h1 class="custom-heading-title">Quản lý Nhân viên</h1>
-      </div>
-      <div class="add-button">
-        <button class="large-button" id="openDialogButton">
-          <i class="mdi mdi-account-plus-outline"></i>
-          Thêm mới
-        </button>
       </div>
     </div>
 
-    <!-- Phần content table -->
-    <div class="table-container">
-      <div class="search-area">
-        <!-- Search box -->
-        <div class="search-box">
-          <input class="input searchbox-text" type="text" placeholder="Tìm kiếm theo mã, họ tên" id="searchInput">
-          <i class="mdi mdi-magnify searchbox-icon"></i>
-        </div>
+    <!-- Phần sidebar -->
+    <div class="sidebar-container" id="sidebar">
+      <div class="sidebar-item" data-link="../index.html">
+        <i class="custom-icon mdi mdi-home"></i>
+        <a class="font-link" href="../index.html">Trang chủ</a>
+      </div>
+      <div class="sidebar-item" data-link="report.html">
+        <i class="custom-icon mdi mdi-chart-areaspline"></i>
+        <a class="font-link" href="report.html">Báo cáo</a>
+      </div>
+      <div class="sidebar-item" data-link="employee.html">
+        <i class="custom-icon mdi mdi-account-group"></i>
+        <a class="font-link" href="employee.html">Nhân viên</a>
+      </div>
+      <div class="sidebar-item" data-link="settings.html">
+        <i class="custom-icon mdi mdi-cog"></i>
+        <a class="font-link" href="settings.html">Cài đặt</a>
+      </div>
+    </div>
 
-        <!-- Tool box -->
-        <div class="feature-box">
-          <div class="feature-button-container">
-            <button class="custom-feature-button">
-              <i class="custom-icon mdi mdi-file-excel-outline"></i>
-            </button>
+    <!-- Phần content trang -->
+    <div class="content-container" id="main-content">
+      <div class="top-area">
+        <div class="info-heading font-text">
+          <h1 class="custom-heading-title">Quản lý Nhân viên</h1>
+        </div>
+        <div class="add-button">
+          <button class="large-button" id="openDialogButton">
+            <i class="mdi mdi-account-plus-outline"></i>
+            Thêm mới
+          </button>
+        </div>
+      </div>
+
+      <!-- Phần content table -->
+      <div class="table-container">
+        <div class="search-area">
+          <!-- Search box -->
+          <div class="search-box">
+            <input class="input searchbox-text" type="text" placeholder="Tìm kiếm theo mã, họ tên" id="searchInput" />
+            <i class="mdi mdi-magnify searchbox-icon"></i>
           </div>
-          <div class="feature-button-container">
-            <button class="custom-feature-button">
-              <i class="custom-icon mdi mdi-reload"></i>
-            </button>
-          </div>
-        </div>
-      </div>
 
-      <!-- Nội dung bảng -->
-      <div class="table-area">
-        <table class="table-content font-text" id="dataTable">
-          <thead>
-            <tr>
-              <th>STT</th>
-              <th>Mã nhân viên</th>
-              <th>Họ và tên</th>
-              <th>Giới tính</th>
-              <th>Ngày sinh</th>
-              <th>Địa chỉ email</th>
-              <th>Địa chỉ</th>
-            </tr>
-          </thead>
-          <tbody id="tableBody">
-          </tbody>
-        </table>
-      </div>
-
-      <!-- Phân trang -->
-      <div class="pagination-area font-text">
-        <div class="total-employee-container">
-          <h3>
-            Tổng số nhân viên: 
-            <span id="totalRecords"></span>
-          </h3>
-        </div>
-        <div class="pagination-container">
-          <div>
-            <h4>Số bản ghi/trang</h4>
-          </div>
-          <div class="pagination-select-container">
-            <select id="recordPerPage" class="select-item">
-              <option value="5">5</option>
-              <option value="10">10</option>
-              <option value="20">20</option>
-              <option value="50">50</option>
-            </select>
-          </div>
-          <div class="pagination-navigation">
-            <button id="prevPage" class="navigation-button">
-              <i class="mdi mdi-chevron-left"></i>
-            </button>
-            <button id="nextPage" class="navigation-button">
-              <i class="mdi mdi-chevron-right"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Dialog thêm nhân viên -->
-  <div id="addEmployeeDialog" class="modal-container font-text">
-    <div class="modal-content">
-      <h3 style="padding-left: 5px">Thông tin nhân viên</h3>
-      <form id="addEmployeeForm">
-        <div class="form-row">
-          <div style="flex-grow: 1">
-            <div class="form-row">
-              <div class="form-item" style="flex-grow: 1">
-                <label class="form-label">
-                  Mã nhân viên
-                  <span style="color: #Ff0000">*</span>
-                </label>
-                <input class="form-input" type="text" required>
-              </div>
-              <div class="form-item" style="flex-grow: 1">
-                <label class="form-label">
-                  Họ và tên
-                  <span style="color: #Ff0000">*</span>
-                </label>
-                <input class="form-input" type="text" required>
-              </div>
+          <!-- Tool box -->
+          <div class="feature-box">
+            <div class="feature-button-container">
+              <button class="custom-feature-button">
+                <i class="custom-icon mdi mdi-file-excel-outline"></i>
+              </button>
             </div>
-            <div class="form-item" style="flex-grow: 1">
-              <label class="form-label" title="Vị trí của nhân viên">Vị trí</label>
-              <select class="form-input" name="" id="">
-                <option value="QL">Quản lý</option>
-                <option value="NV">Nhân viên</option>
+            <div class="feature-button-container">
+              <button class="custom-feature-button">
+                <i class="custom-icon mdi mdi-reload"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Nội dung bảng -->
+        <div class="table-area">
+          <table class="table-content font-text" id="dataTable">
+            <thead>
+              <tr>
+                <th>STT</th>
+                <th>Mã nhân viên</th>
+                <th>Họ và tên</th>
+                <th>Giới tính</th>
+                <th>Ngày sinh</th>
+                <th>Địa chỉ email</th>
+                <th>Địa chỉ</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+        </div>
+
+        <!-- Phân trang -->
+        <div class="pagination-area font-text">
+          <div class="total-employee-container">
+            <h3>
+              Tổng số nhân viên:
+              <span id="totalRecords"></span>
+            </h3>
+          </div>
+          <div class="pagination-container">
+            <div>
+              <h4>Số bản ghi/trang</h4>
+            </div>
+            <div class="pagination-select-container">
+              <select id="recordPerPage" class="select-item">
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
               </select>
             </div>
-            <div class="form-item" style="flex-grow: 1">
-              <label class="form-label" title="Phòng ban nhân viên làm việc">Phòng ban</label>
-              <select class="form-input" name="" id="">
-                <option value="IT">Developer</option>
-                <option value="DS">Design</option>
-              </select>
+            <div class="pagination-navigation">
+              <button id="prevPage" class="navigation-button">
+                <i class="mdi mdi-chevron-left"></i>
+              </button>
+              <button id="nextPage" class="navigation-button">
+                <i class="mdi mdi-chevron-right"></i>
+              </button>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
 
-          <div style="flex-grow: 1">
-            <div class="form-row">
-              <div class="form-item" style="flex-grow: 1">
-                <label class="form-label">Ngày sinh</label>
-                <input class="form-input" type="date" required>
+    <!-- Dialog thêm nhân viên -->
+    <div id="addEmployeeDialog" class="modal-container font-text">
+      <div class="modal-content">
+        <h3 style="padding-left: 5px">Thông tin nhân viên</h3>
+        <form id="addEmployeeForm">
+          <div class="form-row">
+            <div style="flex-grow: 1">
+              <div class="form-row">
+                <div class="form-item" style="flex-grow: 1">
+                  <label class="form-label">
+                    Mã nhân viên
+                    <span style="color: #ff0000">*</span>
+                  </label>
+                  <input class="form-input" id="employeeCode" type="text" required />
+                </div>
+                <div class="form-item" style="flex-grow: 1">
+                  <label class="form-label">
+                    Họ và tên
+                    <span style="color: #ff0000">*</span>
+                  </label>
+                  <input class="form-input" id="employeeName" type="text" required />
+                </div>
               </div>
-              <div class="form-item" style="flex-grow: 10">
-                <label class="form-label">Giới tính</label>
-                <div class="form-radio">
-                  <div>
-                    <input type="radio" id="male" name="gender" value="male">
-                    <label for="male">Nam</label>
-                  </div>
-                  <div>
-                    <input type="radio" id="female" name="gender" value="female">
-                    <label for="female">Nữ</label>
-                  </div>
-                  <div>
-                    <input type="radio" id="other" name="gender" value="other">
-                    <label for="other">Khác</label>
+              <div class="form-item" style="flex-grow: 1">
+                <label class="form-label" title="Vị trí của nhân viên">Vị trí</label>
+                <select class="form-input" name="" id="employeePos"></select>
+              </div>
+              <div class="form-item" style="flex-grow: 1">
+                <label class="form-label" title="Phòng ban nhân viên làm việc">Phòng ban</label>
+                <select class="form-input" name="" id="employeeDepartment"></select>
+              </div>
+            </div>
+
+            <div style="flex-grow: 1">
+              <div class="form-row">
+                <div class="form-item" style="flex-grow: 1">
+                  <label class="form-label">Ngày sinh</label>
+                  <input class="form-input" id="employeeDob" type="date" required />
+                </div>
+                <div class="form-item" style="flex-grow: 10">
+                  <label class="form-label">Giới tính</label>
+                  <div class="form-radio">
+                    <div>
+                      <input type="radio" id="male" name="gender" value="0" />
+                      <label for="male">Nam</label>
+                    </div>
+                    <div>
+                      <input type="radio" id="female" name="gender" value="1" />
+                      <label for="female">Nữ</label>
+                    </div>
+                    <div>
+                      <input type="radio" id="other" name="gender" value="2" />
+                      <label for="other">Khác</label>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="form-row">
-              <div class="form-item" style="flex-grow: 3">
-                <label class="form-label" title="Số thẻ căn cước công dân">Số CCCD</label>
-                <input class="form-input" type="text" required>
+              <div class="form-row">
+                <div class="form-item" style="flex-grow: 3">
+                  <label class="form-label" title="Số thẻ căn cước công dân">Số CCCD</label>
+                  <input class="form-input" id="identityNumber" type="number" />
+                </div>
+                <div class="form-item" style="flex-grow: 1">
+                  <label class="form-label" title="Ngày cấp thẻ căn cước công dân">Ngày cấp</label>
+                  <input class="form-input" id="identityDate" type="date" />
+                </div>
               </div>
               <div class="form-item" style="flex-grow: 1">
-                <label class="form-label" title="Ngày cấp thẻ căn cước công dân">Ngày cấp</label>
-                <input class="form-input" type="date" required>
+                <label class="form-label" title="Nơi cấp thẻ căn cước công dân">Nơi cấp</label>
+                <input class="form-input" id="identityPlace" type="text" />
               </div>
             </div>
+          </div>
+
+          <div class="form-item">
+            <label class="form-label" title="Địa chỉ cư trú của nhân viên">Địa chỉ</label>
+            <input class="form-input" id="employeeAddress" type="text" required />
+          </div>
+
+          <div class="form-row">
             <div class="form-item" style="flex-grow: 1">
-              <label class="form-label" title="Nơi cấp thẻ căn cước công dân">Nơi cấp</label>
-              <input class="form-input" type="text" required>
+              <label class="form-label">ĐT di động</label>
+              <input class="form-input" type="text" />
+            </div>
+            <div class="form-item" style="flex-grow: 1">
+              <label class="form-label">ĐT cố định</label>
+              <input class="form-input" type="text" />
+            </div>
+            <div class="form-item" style="flex-grow: 1">
+              <label class="form-label" title="Email hay sử dụng">Email</label>
+              <input class="form-input" id="employeeEmail" type="text" required />
             </div>
           </div>
-        </div>
 
-        <div class="form-item">
-          <label class="form-label" title="Địa chỉ cư trú của nhân viên">Địa chỉ</label>
-          <input class="form-input" type="text" required>
-        </div>
+          <div class="form-row">
+            <div class="form-item" style="flex-grow: 1">
+              <label class="form-label" title="Tài khoản ngân hàng hay sử dụng">Tài khoản ngân hàng</label>
+              <input class="form-input" type="text" />
+            </div>
+            <div class="form-item" style="flex-grow: 1">
+              <label class="form-label">Tên ngân hàng</label>
+              <input class="form-input" type="text" />
+            </div>
+            <div class="form-item" style="flex-grow: 1">
+              <label class="form-label" title="Chi nhánh ngân hàng">Chi nhánh</label>
+              <input class="form-input" type="text" />
+            </div>
+            <input type="hidden" id="employeeId" />
+          </div>
 
-        <div class="form-row">
-          <div class="form-item" style="flex-grow: 1">
-            <label class="form-label">ĐT di động</label>
-            <input class="form-input" type="text" required>
+          <div class="form-button-area">
+            <div class="form-button-container">
+              <button class="close-button" type="submit">Hủy</button>
+              <button class="large-button" type="submit">Xác nhận</button>
+            </div>
           </div>
-          <div class="form-item" style="flex-grow: 1">
-            <label class="form-label">ĐT cố định</label>
-            <input class="form-input" type="text" required>
-          </div>
-          <div class="form-item" style="flex-grow: 1">
-            <label class="form-label" title="Email hay sử dụng">Email</label>
-            <input class="form-input" type="text" required>
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-item" style="flex-grow: 1">
-            <label class="form-label" title="Tài khoản ngân hàng hay sử dụng">Tài khoản ngân hàng</label>
-            <input class="form-input" type="text" required>
-          </div>
-          <div class="form-item" style="flex-grow: 1">
-            <label class="form-label">Tên ngân hàng</label>
-            <input class="form-input" type="text" required>
-          </div>
-          <div class="form-item" style="flex-grow: 1">
-            <label class="form-label" title="Chi nhánh ngân hàng">Chi nhánh</label>
-            <input class="form-input" type="text" required>
-          </div>
-        </div>
-        
-        <div class="form-button-area">
-          <div class="form-button-container">
-            <button class="close-button" type="submit">Hủy</button>
-            <button class="large-button" type="submit">Xác nhận</button>
-          </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
-  </div>
 
-  <script type="text/javascript" src="../js/employee-dialog.js"></script>
-  <script type="text/javascript" src="../js/sidebar.js"></script>
-  <script type="text/javascript" src="../js/table-data.js"></script>
-</body>
+    <!-- Popup xóa nhân viên -->
+    <div class="popup-container">
+      <div class="popup-content" id="deletePopup">
+        <div>
+          <h3>Xác nhận xóa nhân viên</h3>
+        </div>
+        <div class="popup-button-container">
+          <button class="small-button" id="cancelDeleteButton">Hủy</button>
+          <button class="small-delete-button" id="confirmDeleteButton">Xóa</button>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="../js/employee-dialog.js"></script>
+    <script type="text/javascript" src="../js/sidebar.js"></script>
+    <script type="text/javascript" src="../js/employee.js"></script>
+    <script type="text/javascript" src="../js/position.js"></script>
+    <script type="text/javascript" src="../js/department.js"></script>
+  </body>
 </html>

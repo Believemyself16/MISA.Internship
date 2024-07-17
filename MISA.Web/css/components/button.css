@@ -115,3 +115,24 @@ tr:hover .action-button-container {
 .close-button:hover {
   cursor: pointer;
 }
+
+.small-button {
+  width: 50px;
+  height: 25px;
+  border: 1px solid #808080;
+  border-radius: 3px;
+  font-size: 16px;
+}
+.small-delete-button {
+  width: 50px;
+  height: 25px;
+  border: 1px solid #808080;
+  border-radius: 3px;
+  background-color: #Ff0000;
+  color: #fff;
+  font-size: 16px;
+}
+.small-button,
+.small-delete-button:hover {
+  cursor: pointer;
+}

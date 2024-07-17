@@ -1,0 +1,4 @@
+.blur {
+  z-index: 999;
+  filter: blur(5px);
+}
