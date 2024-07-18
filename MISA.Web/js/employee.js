@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let recordPerPage = parseInt(recordPerPageSelect.value);
   let listEmployee = [];
 
+  //#region GetPageEmployee API
   function displayData(dataArray, currentPage) {
     tableBody.innerHTML = "";
     const startIndex = (currentPage - 1) * recordPerPage;
@@ -55,64 +56,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const deleteButton = row.querySelector(".delete-button");
       deleteButton.addEventListener("click", function () {
-        const employeeId = item.EmployeeId;
-        const deletePopup = document.querySelector(".popup-container");
-        deletePopup.style.display = "flex";
-
-        const cancelButton = document.getElementById("cancelDeleteButton");
-        cancelButton.addEventListener("click", function () {
-          deletePopup.style.display = "none";
-        });
-
-        const confirmDeleteButton = document.getElementById("confirmDeleteButton");
-        confirmDeleteButton.addEventListener("click", function () {
-          fetch(`https://cukcuk.manhnv.net/api/v1/Employees/${employeeId}`, {
-            method: "DELETE",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          })
-            .then((response) => {
-              if (response.ok) {
-                deletePopup.style.display = "none";
-                alert("Xóa nhân viên thành công");
-                listEmployee = listEmployee.filter((emp) => emp.EmployeeId !== employeeId);
-                location.reload();
-              } else {
-                throw new Error(`Không thể xóa nhân viên với ID ${employeeId}`);
-              }
-            })
-            .catch((error) => {
-              console.error("Lỗi khi xóa nhân viên:", error);
-              alert("Có lỗi xảy ra khi xóa nhân viên.");
-            });
-        });
+        openDeleteModal(item);
       });
     });
 
     totalRecords.textContent = dataArray.length;
   }
 
-  function openEditModal(employee) {
-    const dialog = document.getElementById("addEmployeeDialog");
-    const contentArea = document.getElementById("main-content");
+  fetch("https://cukcuk.manhnv.net/api/v1/Employees")
+    .then((response) => response.json())
+    .then((data) => {
+      listEmployee = data;
+      updatePagination(listEmployee);
+    })
+    .catch((error) => console.error("Error fetching employee data:", error));
+  //#endregion
 
-    document.getElementById("employeeId").value = employee.EmployeeId;
-    document.getElementById("employeeCode").value = employee.EmployeeCode;
-    document.getElementById("employeeName").value = employee.FullName;
-    document.getElementById("employeeDob").value = employee.DateOfBirth.split("T")[0];
-    document.querySelector(`input[name="gender"][value="${employee.Gender}"]`).checked = true;
-    document.getElementById("identityNumber").value = employee.IdentityNumber;
-    document.getElementById("identityDate").value = employee.IdentityDate.split("T")[0];
-    document.getElementById("identityPlace").value = employee.IdentityPlace;
-    document.getElementById("employeeDepartment").value = employee.DepartmentId;
-    document.getElementById("employeeAddress").value = employee.Address;
-    document.getElementById("employeeEmail").value = employee.Email;
-
-    dialog.style.display = "flex";
-    contentArea.classList.add("blur");
-  }
-
+  //#region Pagination
   function updatePagination(dataArray) {
     const totalRecords = dataArray.length;
     const totalPages = Math.ceil(totalRecords / recordPerPage);
@@ -144,22 +104,39 @@ document.addEventListener("DOMContentLoaded", function () {
       updatePagination(listEmployee);
     }
   });
+  //#endregion
 
+  //#region SearchFilter
   searchInput.addEventListener("input", function () {
     const searchValue = searchInput.value.toLowerCase();
     const filteredData = listEmployee.filter((item) => item.FullName.toLowerCase().includes(searchValue));
     updatePagination(filteredData);
   });
+  //#endregion
 
-  fetch("https://cukcuk.manhnv.net/api/v1/Employees")
-    .then((response) => response.json())
-    .then((data) => {
-      listEmployee = data;
-      updatePagination(listEmployee);
-    })
-    .catch((error) => console.error("Error fetching employee data:", error));
+  //#region AddEmployee, EditEmployee API
+  function openEditModal(employee) {
+    const dialog = document.getElementById("addEmployeeDialog");
+    const contentArea = document.getElementById("main-content");
 
-  // Thêm và sửa thông tin nhân viên
+    document.getElementById("employeeId").value = employee.EmployeeId;
+    document.getElementById("employeeCode").value = employee.EmployeeCode;
+    document.getElementById("employeeName").value = employee.FullName;
+    document.getElementById("employeeDob").value = employee.DateOfBirth.split("T")[0];
+    document.querySelector(`input[name="gender"][value="${employee.Gender}"]`).checked = true;
+    document.getElementById("identityNumber").value = employee.IdentityNumber;
+    document.getElementById("identityDate").value = employee.IdentityDate.split("T")[0];
+    document.getElementById("identityPlace").value = employee.IdentityPlace;
+    document.getElementById("employeeDepartment").value = employee.DepartmentId;
+    document.getElementById("employeeAddress").value = employee.Address;
+    document.getElementById("employeeEmail").value = employee.Email;
+
+    document.getElementById("employeeCode").focus();
+
+    dialog.style.display = "flex";
+    contentArea.classList.add("blur");
+  }
+
   const form = document.getElementById("addEmployeeForm");
   form.addEventListener("submit", function (event) {
     event.preventDefault();
@@ -218,4 +195,42 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("Error adding employee:", error);
       });
   });
+  //#endregion
+
+  //#region DeleteEmployee API
+  function openDeleteModal(employee) {
+    const employeeId = employee.EmployeeId;
+    const deletePopup = document.querySelector(".popup-container");
+    deletePopup.style.display = "flex";
+
+    const cancelButton = document.getElementById("cancelDeleteButton");
+    cancelButton.addEventListener("click", function () {
+      deletePopup.style.display = "none";
+    });
+
+    const confirmDeleteButton = document.getElementById("confirmDeleteButton");
+    confirmDeleteButton.addEventListener("click", function () {
+      fetch(`https://cukcuk.manhnv.net/api/v1/Employees/${employeeId}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => {
+          if (response.ok) {
+            deletePopup.style.display = "none";
+            alert("Xóa nhân viên thành công");
+            listEmployee = listEmployee.filter((emp) => emp.EmployeeId !== employeeId);
+            location.reload();
+          } else {
+            throw new Error(`Không thể xóa nhân viên với ID ${employeeId}`);
+          }
+        })
+        .catch((error) => {
+          console.error("Lỗi khi xóa nhân viên:", error);
+          alert("Có lỗi xảy ra khi xóa nhân viên.");
+        });
+    });
+  }
+  //#endregion
 });
