@@ -6,15 +6,15 @@ document.addEventListener("DOMContentLoaded", function () {
   const totalRecords = document.getElementById("totalRecords");
   const searchInput = document.getElementById("searchInput");
 
-  let currentPage = 1;
-  let recordPerPage = parseInt(recordPerPageSelect.value);
-  let listEmployee = [];
+  let _currentPage = 1;
+  let _recordPerPage = parseInt(recordPerPageSelect.value);
+  let _listEmployee = [];
 
   //#region GetPageEmployee API
-  function displayData(dataArray, currentPage) {
+  function displayData(dataArray, _currentPage) {
     tableBody.innerHTML = "";
-    const startIndex = (currentPage - 1) * recordPerPage;
-    const endIndex = startIndex + recordPerPage;
+    const startIndex = (_currentPage - 1) * _recordPerPage;
+    const endIndex = startIndex + _recordPerPage;
     const paginatedData = dataArray.slice(startIndex, endIndex);
 
     paginatedData.forEach((item, index) => {
@@ -66,8 +66,8 @@ document.addEventListener("DOMContentLoaded", function () {
   fetch("https://cukcuk.manhnv.net/api/v1/Employees")
     .then((response) => response.json())
     .then((data) => {
-      listEmployee = data;
-      updatePagination(listEmployee);
+      _listEmployee = data;
+      updatePagination(_listEmployee);
     })
     .catch((error) => console.error("Error fetching employee data:", error));
   //#endregion
@@ -75,33 +75,33 @@ document.addEventListener("DOMContentLoaded", function () {
   //#region Pagination
   function updatePagination(dataArray) {
     const totalRecords = dataArray.length;
-    const totalPages = Math.ceil(totalRecords / recordPerPage);
+    const totalPages = Math.ceil(totalRecords / _recordPerPage);
 
-    prevPageButton.disabled = currentPage === 1;
-    nextPageButton.disabled = currentPage === totalPages || totalRecords === 0;
+    prevPageButton.disabled = _currentPage === 1;
+    nextPageButton.disabled = _currentPage === totalPages || totalRecords === 0;
 
-    displayData(dataArray, currentPage);
+    displayData(dataArray, _currentPage);
   }
 
   recordPerPageSelect.addEventListener("change", function () {
-    recordPerPage = parseInt(recordPerPageSelect.value);
-    currentPage = 1;
-    updatePagination(listEmployee);
+    _recordPerPage = parseInt(recordPerPageSelect.value);
+    _currentPage = 1;
+    updatePagination(_listEmployee);
   });
 
   prevPageButton.addEventListener("click", function () {
-    if (currentPage > 1) {
-      currentPage--;
-      updatePagination(listEmployee);
+    if (_currentPage > 1) {
+      _currentPage--;
+      updatePagination(_listEmployee);
     }
   });
 
   nextPageButton.addEventListener("click", function () {
-    const totalRecords = listEmployee.length;
-    const totalPages = Math.ceil(totalRecords / recordPerPage);
-    if (currentPage < totalPages) {
-      currentPage++;
-      updatePagination(listEmployee);
+    const totalRecords = _listEmployee.length;
+    const totalPages = Math.ceil(totalRecords / _recordPerPage);
+    if (_currentPage < totalPages) {
+      _currentPage++;
+      updatePagination(_listEmployee);
     }
   });
   //#endregion
@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
   //#region SearchFilter
   searchInput.addEventListener("input", function () {
     const searchValue = searchInput.value.toLowerCase();
-    const filteredData = listEmployee.filter((item) => item.FullName.toLowerCase().includes(searchValue));
+    const filteredData = _listEmployee.filter((item) => item.FullName.toLowerCase().includes(searchValue));
     updatePagination(filteredData);
   });
   //#endregion
@@ -130,8 +130,6 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("employeeDepartment").value = employee.DepartmentId;
     document.getElementById("employeeAddress").value = employee.Address;
     document.getElementById("employeeEmail").value = employee.Email;
-
-    document.getElementById("employeeCode").focus();
 
     dialog.style.display = "flex";
     contentArea.classList.add("blur");
@@ -220,7 +218,7 @@ document.addEventListener("DOMContentLoaded", function () {
           if (response.ok) {
             deletePopup.style.display = "none";
             alert("Xóa nhân viên thành công");
-            listEmployee = listEmployee.filter((emp) => emp.EmployeeId !== employeeId);
+            _listEmployee = _listEmployee.filter((emp) => emp.EmployeeId !== employeeId);
             location.reload();
           } else {
             throw new Error(`Không thể xóa nhân viên với ID ${employeeId}`);
