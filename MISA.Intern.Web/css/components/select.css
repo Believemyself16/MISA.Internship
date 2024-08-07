@@ -1,0 +1,25 @@
+.select-container {
+  width: 240px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+}
+
+.select-item {
+  width: 75%;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+.select-item:hover {
+  cursor: pointer;
+}
+.select-option {
+  color: red;
+  padding: 50px 0;
+}
+
+.pagination-select-container {
+  width: 60px;
+  padding-left: 15px;
+}

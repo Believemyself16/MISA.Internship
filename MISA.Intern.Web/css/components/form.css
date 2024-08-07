@@ -1,0 +1,25 @@
+.form-row {
+  display: flex;
+}
+.form-item {
+  display: flex;
+  flex-direction: column;
+  height: 50px;
+  padding: 5px 5px;
+}
+.form-radio {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.form-label {
+  padding-bottom: 2px;
+}
+.form-input {
+  height: 100%;
+  border: 1px solid #808080;
+  border-radius: 5px;
+  padding-left: 5px;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+}
