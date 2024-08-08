@@ -193,23 +193,23 @@
                     Mã nhân viên
                     <span style="color: #ff0000">*</span>
                   </label>
-                  <input class="form-input" id="employeeCode" type="text" tabindex="1" required />
+                  <input class="form-input" name="EmployeeCode" id="employeeCode" type="text" tabindex="1" />
                 </div>
                 <div class="form-item" style="flex-grow: 1">
                   <label class="form-label">
                     Họ và tên
                     <span style="color: #ff0000">*</span>
                   </label>
-                  <input class="form-input" id="employeeName" type="text" tabindex="2" required />
+                  <input class="form-input" name="Fullname" id="employeeName" type="text" tabindex="2" />
                 </div>
               </div>
               <div class="form-item" style="flex-grow: 1">
                 <label class="form-label" title="Vị trí của nhân viên">Vị trí</label>
-                <select class="form-input" name="" tabindex="7" id="employeePos"></select>
+                <select class="form-input" name="PositionId" tabindex="7" id="employeePosition"></select>
               </div>
               <div class="form-item" style="flex-grow: 1">
                 <label class="form-label" title="Phòng ban nhân viên làm việc">Phòng ban</label>
-                <select class="form-input" name="" tabindex="10" id="employeeDepartment"></select>
+                <select class="form-input" name="DepartmentId" tabindex="10" id="employeeDepartment"></select>
               </div>
             </div>
 
@@ -217,21 +217,21 @@
               <div class="form-row">
                 <div class="form-item" style="flex-grow: 1">
                   <label class="form-label">Ngày sinh</label>
-                  <input class="form-input" id="employeeDob" type="date" tabindex="3" required />
+                  <input class="form-input" name="DateOfBirth" id="employeeDob" type="date" tabindex="3" />
                 </div>
                 <div class="form-item" style="flex-grow: 10">
                   <label class="form-label">Giới tính</label>
                   <div class="form-radio">
                     <div>
-                      <input type="radio" id="male" name="gender" tabindex="4" value="0" />
+                      <input type="radio" id="male" name="Gender" tabindex="4" value="Nam" />
                       <label for="male">Nam</label>
                     </div>
                     <div>
-                      <input type="radio" id="female" name="gender" tabindex="5" value="1" />
+                      <input type="radio" id="female" name="Gender" tabindex="5" value="Nữ" />
                       <label for="female">Nữ</label>
                     </div>
                     <div>
-                      <input type="radio" id="other" name="gender" tabindex="6" value="2" />
+                      <input type="radio" id="other" name="Gender" tabindex="6" value="Khác" />
                       <label for="other">Khác</label>
                     </div>
                   </div>
@@ -240,52 +240,52 @@
               <div class="form-row">
                 <div class="form-item" style="flex-grow: 3">
                   <label class="form-label" title="Số thẻ căn cước công dân">Số CCCD</label>
-                  <input class="form-input" id="identityNumber" tabindex="8" type="number" />
+                  <input class="form-input" name="IdentityNumber" id="identityNumber" tabindex="8" type="number" />
                 </div>
                 <div class="form-item" style="flex-grow: 1">
                   <label class="form-label" title="Ngày cấp thẻ căn cước công dân">Ngày cấp</label>
-                  <input class="form-input" id="identityDate" tabindex="9" type="date" />
+                  <input class="form-input" name="IdentityDate" id="identityDate" tabindex="9" type="date" />
                 </div>
               </div>
               <div class="form-item" style="flex-grow: 1">
                 <label class="form-label" title="Nơi cấp thẻ căn cước công dân">Nơi cấp</label>
-                <input class="form-input" id="identityPlace" tabindex="11" type="text" />
+                <input class="form-input" name="IdentityPlace" id="identityPlace" tabindex="11" type="text" />
               </div>
             </div>
           </div>
 
           <div class="form-item">
             <label class="form-label" title="Địa chỉ cư trú của nhân viên">Địa chỉ</label>
-            <input class="form-input" id="employeeAddress" tabindex="12" type="text" required />
+            <input class="form-input" name="Address" id="employeeAddress" tabindex="12" type="text" />
           </div>
 
           <div class="form-row">
             <div class="form-item" style="flex-grow: 1">
               <label class="form-label">ĐT di động</label>
-              <input class="form-input" type="text" tabindex="13" />
+              <input class="form-input" name="MobilePhone" id="mobilePhone" type="text" tabindex="13" />
             </div>
             <div class="form-item" style="flex-grow: 1">
               <label class="form-label">ĐT cố định</label>
-              <input class="form-input" type="text" tabindex="14" />
+              <input class="form-input" name="LandlinePhone" id="landlinePhone" type="text" tabindex="14" />
             </div>
             <div class="form-item" style="flex-grow: 1">
               <label class="form-label" title="Email hay sử dụng">Email</label>
-              <input class="form-input" id="employeeEmail" tabindex="15" type="text" required />
+              <input class="form-input" name="Email" id="employeeEmail" tabindex="15" type="text" />
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-item" style="flex-grow: 1">
               <label class="form-label" title="Tài khoản ngân hàng hay sử dụng">Tài khoản ngân hàng</label>
-              <input class="form-input" type="text" tabindex="16" />
+              <input class="form-input" name="BankNumber" id="bankNumber" type="text" tabindex="16" />
             </div>
             <div class="form-item" style="flex-grow: 1">
               <label class="form-label">Tên ngân hàng</label>
-              <input class="form-input" type="text" tabindex="17" />
+              <input class="form-input" name="BankName" id="bankName" type="text" tabindex="17" />
             </div>
             <div class="form-item" style="flex-grow: 1">
               <label class="form-label" title="Chi nhánh ngân hàng">Chi nhánh</label>
-              <input class="form-input" type="text" tabindex="18" />
+              <input class="form-input" name="BankBranch" id="bankBranch" type="text" tabindex="18" />
             </div>
             <input type="hidden" id="employeeId" />
           </div>

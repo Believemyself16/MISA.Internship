@@ -19,15 +19,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     paginatedData.forEach((item, index) => {
       const row = document.createElement("tr");
+      console.log(item);
       row.innerHTML = `
         <td>${startIndex + index + 1}</td>
-        <td>${item.EmployeeCode}</td>
-        <td>${item.FullName}</td>
-        <td>${item.GenderName}</td>
-        <td>${new Date(item.DateOfBirth).toLocaleDateString()}</td>
-        <td>${item.Email}</td>
+        <td>${item.employeeCode}</td>
+        <td>${item.fullname}</td>
+        <td>${item.genderName}</td>
+        <td>${new Date(item.dateOfBirth).toLocaleDateString()}</td>
+        <td>${item.email}</td>
         <td>
-          ${item.Address}
+          ${item.address}
           <div class="action-button-container">
             <div class="feature-button-container">
               <button class="edit-button custom-feature-button">
@@ -63,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
     totalRecords.textContent = dataArray.length;
   }
 
-  fetch("http://localhost:7010/api/v1/employees")
+  fetch("https://localhost:7010/api/v1/employees")
     .then((response) => response.json())
     .then((data) => {
       _listEmployee = data;
@@ -119,17 +120,46 @@ document.addEventListener("DOMContentLoaded", function () {
     const dialog = document.getElementById("addEmployeeDialog");
     const contentArea = document.getElementById("main-content");
 
-    document.getElementById("employeeId").value = employee.EmployeeId;
-    document.getElementById("employeeCode").value = employee.EmployeeCode;
-    document.getElementById("employeeName").value = employee.FullName;
-    document.getElementById("employeeDob").value = employee.DateOfBirth.split("T")[0];
-    document.querySelector(`input[name="gender"][value="${employee.Gender}"]`).checked = true;
-    document.getElementById("identityNumber").value = employee.IdentityNumber;
-    document.getElementById("identityDate").value = employee.IdentityDate.split("T")[0];
-    document.getElementById("identityPlace").value = employee.IdentityPlace;
-    document.getElementById("employeeDepartment").value = employee.DepartmentId;
-    document.getElementById("employeeAddress").value = employee.Address;
-    document.getElementById("employeeEmail").value = employee.Email;
+    document.getElementById("employeeId").value = employee.employeeId;
+    document.getElementById("employeeCode").value = employee.employeeCode;
+    document.getElementById("employeeName").value = employee.fullname;
+    document.getElementById("employeeDob").value = new Date(employee.dateOfBirth).toISOString().split("T")[0];
+
+    // Lấy ra giới tính của nhân viên
+    const genderRadio = document.querySelector(`input[name="Gender"][value="${employee.genderName}"]`);
+    if (genderRadio) {
+      genderRadio.checked = true;
+    }
+    document.getElementById("identityNumber").value = employee.identityNumber;
+    document.getElementById("identityDate").value = new Date(employee.identityDate).toISOString().split("T")[0];
+    document.getElementById("identityPlace").value = employee.identityPlace;
+
+    // Lấy giá trị phòng ban và vị trí
+    const departmentDropdown = document.getElementById("employeeDepartment");
+    departmentDropdown.value = employee.departmentName;
+    if (departmentDropdown) {
+      let selectedOption = Array.from(departmentDropdown.options).find((option) => option.text === employee.departmentName);
+      if (selectedOption) {
+        selectedOption.selected = true;
+      }
+    }
+
+    const positionDropdown = document.getElementById("employeePosition");
+    positionDropdown.value = employee.positionName;
+    if (positionDropdown) {
+      let selectedOption = Array.from(positionDropdown.options).find((option) => option.text === employee.positionName);
+      if (selectedOption) {
+        selectedOption.selected = true;
+      }
+    }
+
+    document.getElementById("employeeAddress").value = employee.address;
+    document.getElementById("mobilePhone").value = employee.mobilePhone;
+    document.getElementById("landlinePhone").value = employee.landlinePhone;
+    document.getElementById("employeeEmail").value = employee.email;
+    document.getElementById("bankNumber").value = employee.bankNumber;
+    document.getElementById("bankName").value = employee.bankName;
+    document.getElementById("bankBranch").value = employee.bankBranch;
 
     dialog.style.display = "flex";
     contentArea.classList.add("blur");
@@ -140,33 +170,52 @@ document.addEventListener("DOMContentLoaded", function () {
     event.preventDefault();
 
     const employeeId = document.getElementById("employeeId").value;
-    const employeeCode = document.getElementById("employeeCode").value;
+    const employeeCode = document.getElementById("employeeCode").value.trim();
     const fullName = document.getElementById("employeeName").value;
     const dateOfBirth = document.getElementById("employeeDob").value;
-    const gender = document.querySelector('input[name="gender"]:checked').value;
+    const gender = document.querySelector('input[name="Gender"]:checked').value;
+    const positionId = document.getElementById("employeePosition").value;
     const identityNumber = document.getElementById("identityNumber").value;
     const identityDate = document.getElementById("identityDate").value;
     const identityPlace = document.getElementById("identityPlace").value;
     const departmentId = document.getElementById("employeeDepartment").value;
     const address = document.getElementById("employeeAddress").value;
+    const mobilePhone = document.getElementById("mobilePhone").value;
+    const landlinePhone = document.getElementById("landlinePhone").value;
     const email = document.getElementById("employeeEmail").value;
+    const bankNumber = document.getElementById("bankNumber").value;
+    const bankName = document.getElementById("bankName").value;
+    const bankBranch = document.getElementById("bankBranch").value;
 
     const employeeData = {
-      FullName: fullName,
-      EmployeeCode: employeeCode,
-      DateOfBirth: dateOfBirth,
-      Gender: gender,
-      IdentityNumber: identityNumber,
-      IdentityDate: identityDate,
-      IdentityPlace: identityPlace,
-      DepartmentId: departmentId,
-      Address: address,
-      Email: email,
+      fullname: fullName,
+      employeeCode: employeeCode,
+      dateOfBirth: dateOfBirth,
+      gender: gender,
+      positionId: positionId,
+      identityNumber: identityNumber,
+      identityDate: identityDate,
+      identityPlace: identityPlace,
+      departmentId: departmentId,
+      address: address,
+      mobilePhone: mobilePhone,
+      landlinePhone: landlinePhone,
+      email: email,
+      bankNumber: bankNumber,
+      bankName: bankName,
+      bankBranch: bankBranch,
     };
+
+    const payload = {
+      employee: employeeData,
+    };
+
+    debugger;
+    console.log(employeeData);
 
     const dialog = document.getElementById("addEmployeeDialog");
     const contentArea = document.getElementById("main-content");
-    const url = employeeId ? `http://localhost:7010/api/v1/employees/${employeeId}` : `http://localhost:7010/api/v1/employees/`;
+    const url = employeeId ? `https://localhost:7010/api/v1/employees/${employeeId}` : `https://localhost:7010/api/v1/employees/`;
     const method = employeeId ? "PUT" : "POST";
 
     fetch(url, {
@@ -174,7 +223,7 @@ document.addEventListener("DOMContentLoaded", function () {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(employeeData),
+      body: JSON.stringify(payload),
     })
       .then((response) => {
         if (response.ok) {
@@ -208,7 +257,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const confirmDeleteButton = document.getElementById("confirmDeleteButton");
     confirmDeleteButton.addEventListener("click", function () {
-      fetch(`http://localhost:7010/api/v1/employees/${employeeId}`, {
+      fetch(`https://localhost:7010/api/v1/employees/${employeeId}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

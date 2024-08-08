@@ -1,12 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
   const selectElement = document.getElementById("employeeDepartment");
-  fetch("http://localhost:5000/api/v1/departments")
+  fetch("https://localhost:7010/api/v1/departments")
     .then((response) => response.json())
     .then((data) => {
       data.forEach((department) => {
         const option = document.createElement("option");
-        option.value = department.DepartmentId;
-        option.textContent = department.DepartmentName;
+        option.value = department.departmentId;
+        option.textContent = department.departmentName;
         selectElement.appendChild(option);
       });
     })

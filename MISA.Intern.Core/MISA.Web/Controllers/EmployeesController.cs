@@ -3,7 +3,7 @@ using MISA.Core.Entities;
 using MISA.Core.Interfaces.Repository;
 using MISA.Core.Interfaces.Service;
 
-namespace MISA.Web.Controllers
+namespace MISA.Api.Controllers
 {
     [Route("api/v1/employees")]
     [ApiController]
@@ -21,13 +21,19 @@ namespace MISA.Web.Controllers
         public IActionResult GetAllEmployee()
         {
             var employees = _employeeRepository.GetAll();
-            return Ok(employees);
+            var employeeDTOs = employees.Select(e => _employeeService.ConvertToDTO(e)).ToList();
+            return Ok(employeeDTOs);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetEmployeeById(Guid id)
         {
             var employee = _employeeRepository.GetById(id);
+            if (employee == null)
+            {
+                return NotFound();
+            }
+            var employeeDTO = _employeeService.ConvertToDTO(employee);
             return Ok(employee);
         }
 
@@ -42,14 +48,14 @@ namespace MISA.Web.Controllers
         public IActionResult UpdateEmployee(Guid id, [FromBody] Employee employee)
         {
             var res = _employeeService.UpdateService(employee);
-            return StatusCode(200, employee);
+            return Ok(res);
         }
 
         [HttpDelete("{id}")]
         public IActionResult DeleteEmployee(Guid id)
         {
             var res = _employeeService.DeleteService(id);
-            return StatusCode(200, res);
+            return Ok(res);
         }
     }
 }

@@ -1,94 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
-  <link rel="stylesheet" href="../css/layout/body.css">
-  <link rel="stylesheet" href="../css/components/logo.css">
-  <link rel="stylesheet" href="../css/components/icon.css">
-  <link rel="stylesheet" href="../css/layout/header.css">
-  <link rel="stylesheet" href="../css/components/select.css">
-  <link rel="stylesheet" href="../css/components/profile.css">
-  <link rel="stylesheet" href="../css/layout/text.css">
-  <link rel="stylesheet" href="../css/components/button.css">
-  <link rel="stylesheet" href="../css/layout/sidebar.css">
-  
-  <link rel="icon" type="image/png" href="../assets/Favicon-MISA-CukCuk.png">
-  <title>MISA CukCuk</title>
-</head>
-<body>
-  <div class="header-container">
-    <!-- Phần logo web và select chi nhánh -->
-    <div class="area-1">
-      <div class="logo-container">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" />
+    <link rel="stylesheet" href="../css/layout/body.css" />
+    <link rel="stylesheet" href="../css/components/logo.css" />
+    <link rel="stylesheet" href="../css/components/icon.css" />
+    <link rel="stylesheet" href="../css/layout/header.css" />
+    <link rel="stylesheet" href="../css/components/select.css" />
+    <link rel="stylesheet" href="../css/components/profile.css" />
+    <link rel="stylesheet" href="../css/layout/text.css" />
+    <link rel="stylesheet" href="../css/components/button.css" />
+    <link rel="stylesheet" href="../css/layout/sidebar.css" />
+
+    <link rel="icon" type="image/png" href="../assets/Favicon-MISA-CukCuk.png" />
+    <title>MISA CukCuk</title>
+  </head>
+  <body>
+    <div class="header-container">
+      <!-- Phần logo web và select chi nhánh -->
+      <div class="area-1">
+        <div class="logo-container">
+          <div class="button-container">
+            <button class="custom-button">
+              <i class="custom-icon mdi mdi-menu" id="menu-button"></i>
+            </button>
+          </div>
+          <div>
+            <a href="./index.html">
+              <img src="../assets/cukcuk-logo.png" alt="App logo" class="banner-logo" />
+            </a>
+          </div>
+        </div>
+        <div class="select-container">
+          <select class="select-item">
+            <option value="hanoi" class="custom-select-item">Chi nhánh Hà Nội</option>
+            <option value="haiphong">Chi nhánh Hải Phòng</option>
+            <option value="hochiminh">Chi nhánh Hồ Chí Minh</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Phần thông tin tài khoản -->
+      <div class="account-container">
+        <div class="account-info">
+          <div class="account-image-container">
+            <img src="../assets/icon/avatar-default.png" alt="Avatar image" class="account-image" />
+          </div>
+          <div class="font-text account-name">
+            <h3>Vũ Quang Hân</h3>
+          </div>
+        </div>
         <div class="button-container">
           <button class="custom-button">
-            <i class="custom-icon mdi mdi-menu" id="menu-button"></i>
+            <i class="custom-icon mdi mdi-dots-horizontal"></i>
           </button>
         </div>
-        <div>
-          <a href="./index.html">
-            <img src="../assets/cukcuk-logo.png" alt="App logo" class="banner-logo">
-          </a>
-        </div>
-      </div>
-      <div class="select-container">
-        <select class="select-item">
-          <option value="hanoi" class="custom-select-item">Chi nhánh Hà Nội</option>
-          <option value="haiphong">Chi nhánh Hải Phòng</option>
-          <option value="hochiminh">Chi nhánh Hồ Chí Minh</option>
-        </select>
       </div>
     </div>
-    
-    <!-- Phần thông tin tài khoản -->
-    <div class="account-container">
-      <div class="account-info">
-        <div class="account-image-container">
-          <img src="../assets/icon/avatar-default.png" alt="Avatar image" class="account-image">
-        </div>
-        <div class="font-text account-name">
-          <h3>Vũ Quang Hân</h3>
-        </div>
-      </div>
-      <div class="button-container">
-        <button class="custom-button">
-          <i class="custom-icon mdi mdi-dots-horizontal"></i>
-        </button>
-      </div>
-    </div>
-  </div>
 
-  <!-- Phần sidebar -->
-  <div class="sidebar-container" id="sidebar">
-    <div class="sidebar-item" data-link="index.html">
-      <i class="custom-icon mdi mdi-home"></i>
-      <a class="font-link" href="index.html">Trang chủ</a>
+    <!-- Phần sidebar -->
+    <div class="sidebar-container" id="sidebar">
+      <div class="sidebar-item" data-link="index.html">
+        <i class="custom-icon mdi mdi-home"></i>
+        <a class="font-link" href="index.html">Trang chủ</a>
+      </div>
+      <div class="sidebar-item" data-link="views/report.html">
+        <i class="custom-icon mdi mdi-chart-areaspline"></i>
+        <a class="font-link" href="views/report.html">Báo cáo</a>
+      </div>
+      <div class="sidebar-item" data-link="views/employee.html">
+        <i class="custom-icon mdi mdi-account-group"></i>
+        <a class="font-link" href="views/employee.html">Nhân viên</a>
+      </div>
+      <div class="sidebar-item" data-link="views/settings.html">
+        <i class="custom-icon mdi mdi-cog"></i>
+        <a class="font-link" href="views/settings.html">Cài đặt</a>
+      </div>
     </div>
-    <div class="sidebar-item" data-link="views/report.html">
-      <i class="custom-icon mdi mdi-chart-areaspline"></i>
-      <a class="font-link" href="views/report.html">Báo cáo</a>
-    </div>
-    <div class="sidebar-item" data-link="views/employee.html">
-      <i class="custom-icon mdi mdi-account-group"></i>
-      <a class="font-link" href="views/employee.html">Nhân viên</a>
-    </div>
-    <div class="sidebar-item" data-link="views/settings.html">
-      <i class="custom-icon mdi mdi-cog"></i>
-      <a class="font-link" href="views/settings.html">Cài đặt</a>
-    </div> 
-  </div>
 
-  <!-- Phần content trang -->
-  <div class="content-container">
-    <div>
-      <h1>Đây là trang chủ</h1>
+    <!-- Phần content trang -->
+    <div class="content-container">
+      <div>
+        <h1>Đây là trang chủ</h1>
+      </div>
     </div>
-  </div>
 
-  <script type="text/javascript" src="./js/sidebar.js"></script>
-  <script type="text/javascript" src="./js/test.js"></script>
-</body>
+    <script type="text/javascript" src="./js/sidebar.js"></script>
+  </body>
 </html>

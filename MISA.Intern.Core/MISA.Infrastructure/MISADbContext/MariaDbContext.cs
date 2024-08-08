@@ -78,7 +78,7 @@ namespace MISA.Infrastructure.MISADbContext
                 var propName = prop.Name;
                 var propValue = prop.GetValue(entity);
 
-                if (propName.EndsWith("Id")) // Giả định thuộc tính ID luôn có tên kết thúc với "Id"
+                if (propName.Equals($"{className}Id"))
                 {
                     idValue = propValue; // Lưu ID để sử dụng trong mệnh đề WHERE
                 }
@@ -86,6 +86,7 @@ namespace MISA.Infrastructure.MISADbContext
                 {
                     propListSet += $"{propName} = @{propName}, "; // Chuẩn bị chuỗi set
                     parameters.Add($"@{propName}", propValue);
+                    var a = propValue;
                 }
             }
 
@@ -99,7 +100,7 @@ namespace MISA.Infrastructure.MISADbContext
             var sql = $"UPDATE {className} SET {propListSet} WHERE {className}Id = @Id";
             parameters.Add("@Id", idValue);
 
-            var res = Connection.Execute(sql, parameters);
+            var res = Connection.Execute(sql, param: parameters, transaction: Transaction);
             return res;
         }
 
@@ -109,7 +110,7 @@ namespace MISA.Infrastructure.MISADbContext
             var sql = $"DELETE FROM {className} WHERE {className}Id = @id";
             var parameters = new DynamicParameters();
             parameters.Add("@id", id);
-            var res = Connection.Execute(sql, parameters);
+            var res = Connection.Execute(sql, param: parameters, transaction: Transaction);
             return res;
         }
 

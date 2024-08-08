@@ -37,7 +37,7 @@ namespace MISA.Core.Entities
 
         [MaxLength(10, ErrorMessage = MISAConst.ERROR_PHONENUMBER_LENGTH)]
         public string? MobilePhone { get; set; }
-        public string? LandlineNumber { get; set; }
+        public string? LandlinePhone { get; set; }
 
         [Required(ErrorMessage = MISAConst.ERROR_EMAIL_EMPTY)]
         [EmailAddress(ErrorMessage = MISAConst.ERROR_EMAIL_FORMAT)]
@@ -45,31 +45,12 @@ namespace MISA.Core.Entities
         public string? BankNumber { get; set; }
         public string? BankName { get; set; }
         public string? BankBranch { get; set; }
-        public Guid? DepartmentId { get; set; }
-        public Department Department { get; set; }
-        public Guid? PositionId { get; set; }
-        public Position Position { get; set; }
+        public Guid DepartmentId { get; set; }
+        public Guid PositionId { get; set; }
         public DateTime CreatedDate { get; set; }
         public string? CreatedBy { get; set; }
         public DateTime ModifiedDate { get; set; }
         public string? ModifiedBy { get; set; }
 
-        //public string GenderName
-        //{ 
-        //    get
-        //    {
-        //        switch (Gender)
-        //        {
-        //            case Gender.MALE:
-        //                return "Nam";
-        //            case Gender.FEMALE:
-        //                return "Nữ";
-        //            case Gender.OTHER:
-        //                return "Khác";
-        //            default:
-        //                return "Không xác định";
-        //        }
-        //    }
-        //}
     }
 }
