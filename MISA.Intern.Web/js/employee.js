@@ -34,7 +34,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     paginatedData.forEach((item, index) => {
       const row = document.createElement("tr");
-      console.log(item);
       row.innerHTML = `
         <td>${startIndex + index + 1}</td>
         <td>${item.employeeCode}</td>
@@ -225,9 +224,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (employeeId) {
       employeeData.EmployeeId = employeeId;
     }
-
-    debugger;
-    console.log(employeeData);
 
     const dialog = document.getElementById("addEmployeeDialog");
     const contentArea = document.getElementById("main-content");
