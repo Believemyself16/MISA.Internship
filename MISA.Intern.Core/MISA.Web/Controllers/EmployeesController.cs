@@ -21,26 +21,20 @@ namespace MISA.Api.Controllers
         public IActionResult GetAllEmployee()
         {
             var employees = _employeeRepository.GetAll();
-            var employeeDTOs = employees.Select(e => _employeeService.ConvertToDTO(e)).ToList();
-            return Ok(employeeDTOs);
+            return Ok(employees);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetEmployeeById(Guid id)
         {
             var employee = _employeeRepository.GetById(id);
-            if (employee == null)
-            {
-                return NotFound();
-            }
-            var employeeDTO = _employeeService.ConvertToDTO(employee);
             return Ok(employee);
         }
 
         [HttpPost]
-        public IActionResult InsertEmployee(Employee employee)
+        public IActionResult InsertEmployee([FromBody] Employee employee)
         {
-            var res = _employeeService.InsertService(employee);
+            var res = _employeeService.InsertService(employee);                                                            
             return StatusCode(201, res);
         }
 

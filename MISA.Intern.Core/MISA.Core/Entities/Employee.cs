@@ -15,10 +15,10 @@ namespace MISA.Core.Entities
 
         [Required(ErrorMessage = MISAConst.ERROR_EMPLOYEECODE_EMPTY)]
         [MaxLength(20, ErrorMessage = MISAConst.ERROR_EMPLOYEECODE_LENGTH)]
-        public string EmployeeCode { get; set; }
+        public string EmployeeCode { get; set; } = "";
 
         [Required(ErrorMessage = MISAConst.ERROR_FULLNAME_EMPTY)]
-        public string Fullname { get; set; }
+        public string Fullname { get; set; } = "";
 
         [Required(ErrorMessage = MISAConst.ERROR_DOB_EMPTY)]
         [DateGreaterThanToday(ErrorMessage = MISAConst.ERROR_DOB_GREATER)]
@@ -41,7 +41,7 @@ namespace MISA.Core.Entities
 
         [Required(ErrorMessage = MISAConst.ERROR_EMAIL_EMPTY)]
         [EmailAddress(ErrorMessage = MISAConst.ERROR_EMAIL_FORMAT)]
-        public string Email { get; set; }
+        public string Email { get; set; } = "";
         public string? BankNumber { get; set; }
         public string? BankName { get; set; }
         public string? BankBranch { get; set; }

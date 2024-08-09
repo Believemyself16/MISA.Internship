@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Diagnostics;
 using MISA.Core;
 using MISA.Core.Exceptions;
 using MISA.Core.Interfaces.Repository;
@@ -14,13 +15,12 @@ Common.ConnectionString = builder.Configuration.GetConnectionString("Database1")
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAllOrigins",
-        policy =>
-        {
-            policy.AllowAnyOrigin()
-                  .AllowAnyMethod()
-                  .AllowAnyHeader();
-        });
+    options.AddPolicy("AllowSpecificOrigin",
+        builder => builder
+            .WithOrigins("http://127.0.0.1:5500")
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials());
 });
 
 builder.Services.AddControllers();
@@ -57,7 +57,7 @@ else
 
 app.UseStaticFiles();
 app.UseRouting();
-app.UseCors("AllowAllOrigins");
+app.UseCors("AllowSpecificOrigin");
 
 app.UseHttpsRedirection();
 

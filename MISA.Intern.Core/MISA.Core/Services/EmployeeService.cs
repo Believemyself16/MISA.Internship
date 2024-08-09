@@ -1,9 +1,7 @@
-﻿using MISA.Core.DTOs;
-using MISA.Core.Entities;
+﻿using MISA.Core.Entities;
 using MISA.Core.Exceptions;
 using MISA.Core.Interfaces.Repository;
 using MISA.Core.Interfaces.Service;
-using MISA.Core.MISAEnum;
 
 namespace MISA.Core.Services
 {
@@ -35,41 +33,5 @@ namespace MISA.Core.Services
         {
         }
 
-        public EmployeeDTO ConvertToDTO(Employee employee)
-        {
-            var position = _positionRepository.GetById(employee.PositionId);
-            var department = _departmentRepository.GetById(employee.DepartmentId);
-
-            return new EmployeeDTO
-            {
-                EmployeeId = employee.EmployeeId,
-                EmployeeCode = employee.EmployeeCode,
-                Fullname = employee.Fullname,
-                DateOfBirth = employee.DateOfBirth,
-                GenderName = employee.Gender switch
-                {
-                    Gender.MALE => "Nam",
-                    Gender.FEMALE => "Nữ",
-                    Gender.OTHER => "Khác",
-                    _ => "Không xác định"
-                },
-                IdentityNumber = employee.IdentityNumber,
-                IdentityDate = employee.IdentityDate,
-                IdentityPlace = employee.IdentityPlace,
-                Address = employee.Address,
-                MobilePhone = employee.MobilePhone,
-                LandlinePhone = employee.LandlinePhone,
-                Email = employee.Email,
-                BankNumber = employee.BankNumber,
-                BankName = employee.BankName,
-                BankBranch = employee.BankBranch,
-                PositionName = position.PositionName,
-                DepartmentName = department.DepartmentName,
-                CreatedDate = employee.CreatedDate,
-                CreatedBy = employee.CreatedBy,
-                ModifiedDate = employee.ModifiedDate,
-                ModifiedBy = employee.ModifiedBy
-            };
-        }
     }
 }

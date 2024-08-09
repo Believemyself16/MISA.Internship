@@ -5,6 +5,5 @@ namespace MISA.Core.Interfaces.Service
 {
     public interface IEmployeeService : IBaseService<Employee>
     {
-        EmployeeDTO ConvertToDTO(Employee employee);
     }
 }

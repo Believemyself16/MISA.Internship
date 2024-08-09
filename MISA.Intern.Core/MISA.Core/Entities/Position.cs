@@ -3,6 +3,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MISA.Core.Entities
 {
+    /// <summary>
+    /// Thông tin vị trí
+    /// CreatedBy: VQHan
+    /// </summary>
     public class Position
     {
         public Guid PositionId { get; set; }

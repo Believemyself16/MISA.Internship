@@ -11,6 +11,21 @@ document.addEventListener("DOMContentLoaded", function () {
   let _listEmployee = [];
 
   //#region GetPageEmployee API
+  // Đổi giới tính sang dạng text
+  function getGenderName(gender) {
+    switch (gender) {
+      case 0:
+        return "Nam";
+      case 1:
+        return "Nữ";
+      case 2:
+        return "Khác";
+      default:
+        return "Không xác định";
+    }
+  }
+
+  // Hàm hiển thị dữ liệu dạng bảng
   function displayData(dataArray, _currentPage) {
     tableBody.innerHTML = "";
     const startIndex = (_currentPage - 1) * _recordPerPage;
@@ -24,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <td>${startIndex + index + 1}</td>
         <td>${item.employeeCode}</td>
         <td>${item.fullname}</td>
-        <td>${item.genderName}</td>
+        <td>${getGenderName(item.gender)}</td>
         <td>${new Date(item.dateOfBirth).toLocaleDateString()}</td>
         <td>${item.email}</td>
         <td>
@@ -110,7 +125,7 @@ document.addEventListener("DOMContentLoaded", function () {
   //#region SearchFilter
   searchInput.addEventListener("input", function () {
     const searchValue = searchInput.value.toLowerCase();
-    const filteredData = _listEmployee.filter((item) => item.FullName.toLowerCase().includes(searchValue));
+    const filteredData = _listEmployee.filter((item) => item.fullname.toLowerCase().includes(searchValue));
     updatePagination(filteredData);
   });
   //#endregion
@@ -126,7 +141,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("employeeDob").value = new Date(employee.dateOfBirth).toISOString().split("T")[0];
 
     // Lấy ra giới tính của nhân viên
-    const genderRadio = document.querySelector(`input[name="Gender"][value="${employee.genderName}"]`);
+    const genderRadio = document.querySelector(`input[name="Gender"][value="${employee.gender}"]`);
     if (genderRadio) {
       genderRadio.checked = true;
     }
@@ -136,18 +151,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Lấy giá trị phòng ban và vị trí
     const departmentDropdown = document.getElementById("employeeDepartment");
-    departmentDropdown.value = employee.departmentName;
+    departmentDropdown.value = employee.departmentId;
     if (departmentDropdown) {
-      let selectedOption = Array.from(departmentDropdown.options).find((option) => option.text === employee.departmentName);
+      let selectedOption = Array.from(departmentDropdown.options).find((option) => option.text === employee.departmentId);
       if (selectedOption) {
         selectedOption.selected = true;
       }
     }
 
     const positionDropdown = document.getElementById("employeePosition");
-    positionDropdown.value = employee.positionName;
+    positionDropdown.value = employee.positionId;
     if (positionDropdown) {
-      let selectedOption = Array.from(positionDropdown.options).find((option) => option.text === employee.positionName);
+      let selectedOption = Array.from(positionDropdown.options).find((option) => option.text === employee.positionId);
       if (selectedOption) {
         selectedOption.selected = true;
       }
@@ -170,7 +185,7 @@ document.addEventListener("DOMContentLoaded", function () {
     event.preventDefault();
 
     const employeeId = document.getElementById("employeeId").value;
-    const employeeCode = document.getElementById("employeeCode").value.trim();
+    const employeeCode = document.getElementById("employeeCode").value;
     const fullName = document.getElementById("employeeName").value;
     const dateOfBirth = document.getElementById("employeeDob").value;
     const gender = document.querySelector('input[name="Gender"]:checked').value;
@@ -188,27 +203,28 @@ document.addEventListener("DOMContentLoaded", function () {
     const bankBranch = document.getElementById("bankBranch").value;
 
     const employeeData = {
-      fullname: fullName,
-      employeeCode: employeeCode,
-      dateOfBirth: dateOfBirth,
-      gender: gender,
-      positionId: positionId,
-      identityNumber: identityNumber,
-      identityDate: identityDate,
-      identityPlace: identityPlace,
-      departmentId: departmentId,
-      address: address,
-      mobilePhone: mobilePhone,
-      landlinePhone: landlinePhone,
-      email: email,
-      bankNumber: bankNumber,
-      bankName: bankName,
-      bankBranch: bankBranch,
+      Fullname: fullName,
+      EmployeeCode: employeeCode,
+      DateOfBirth: dateOfBirth,
+      Gender: parseInt(gender),
+      PositionId: positionId,
+      IdentityNumber: identityNumber,
+      IdentityDate: identityDate,
+      IdentityPlace: identityPlace,
+      DepartmentId: departmentId,
+      Address: address,
+      MobilePhone: mobilePhone,
+      LandlinePhone: landlinePhone,
+      Email: email,
+      BankNumber: bankNumber,
+      BankName: bankName,
+      BankBranch: bankBranch,
     };
 
-    const payload = {
-      employee: employeeData,
-    };
+    // Nếu là cập nhật (PUT), thêm EmployeeId vào employeeData
+    if (employeeId) {
+      employeeData.EmployeeId = employeeId;
+    }
 
     debugger;
     console.log(employeeData);
@@ -223,7 +239,7 @@ document.addEventListener("DOMContentLoaded", function () {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(payload),
+      body: JSON.stringify(employeeData),
     })
       .then((response) => {
         if (response.ok) {
@@ -239,14 +255,14 @@ document.addEventListener("DOMContentLoaded", function () {
         location.reload();
       })
       .catch((error) => {
-        console.error("Error adding employee:", error);
+        alert(`Lỗi: ${error.message}`);
       });
   });
   //#endregion
 
   //#region DeleteEmployee API
   function openDeleteModal(employee) {
-    const employeeId = employee.EmployeeId;
+    const employeeId = employee.employeeId;
     const deletePopup = document.querySelector(".popup-container");
     deletePopup.style.display = "flex";
 
